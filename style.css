@@ -1,5 +1,5 @@
-*{margin: 0; padding: 0;}
-#content{
+*{margin: 0; padding: 0; transition: all .8s;}
+#peiqi-wrapper{
   background: #7ec9f8;
   height: 500px;
 }
