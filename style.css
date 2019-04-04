@@ -11,6 +11,24 @@ main{
   display: flex;
   height: 100%;
 }
+.mask{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 39;
+  background: #e65f5f;
+  display: flex;
+}
+.mask .mask-btn{
+  margin: auto;
+  padding: 8px 24px;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
 #code{
   padding: 20px;
 }
@@ -35,7 +53,7 @@ main{
   flex-direction: column;
   list-style: none;
 }
-.btn-wrap .btn{
+.btn-wrap .btn,.mute-btn{
   padding: 4px 16px;
   border-radius: 8px;
   background: #00a0e9;

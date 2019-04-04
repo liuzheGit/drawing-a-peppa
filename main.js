@@ -234,6 +234,16 @@ let code = `
 }
 `;
 $(function(){
+  let player = $('#player')[0];
+  $('.mask-btn').click(function(){
+    $('.mask').hide();
+    writeCode('', code);
+    player.load();
+    player.play();
+  });
+  $('.mute-btn').click(function(){
+    player.volume > 0 ? player.volume = 0.0 : player.volume = 1.0;
+  });
   // $('#styleTag').html(code);
   // $('#code').html(code);
   let speed = null;
@@ -274,5 +284,4 @@ $(function(){
       }
     }, speed);
   }
-  writeCode('', code);
 });
