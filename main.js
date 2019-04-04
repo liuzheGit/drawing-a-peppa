@@ -185,7 +185,8 @@ let code = `
 `;
 
 $(function(){
-  $('#styleTag').html(code);
+  // $('#styleTag').html(code);
+  // $('#code').html(code);
   function writeCode(prefix, code){
     let duration = 2;
     let styleTag = $('#styleTag');
@@ -206,5 +207,5 @@ $(function(){
       }
     }, duration)
   }
-  // writeCode('', code);
+  writeCode('', code);
 });

@@ -2,21 +2,23 @@
 #peiqi-wrapper{
   background: #7ec9f8;
   height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 50%;
+  position: relative;
 }
-
-#code-wrapper{
-  position: fixed;
+html,body{
   height: 100%;
-  left: 0;
-  width: 50%;
-  border: 1px solid red;
-  overflow: auto;
 }
-
+main{
+  display: flex;
+  height: 100%;
+}
+#code-wrapper{
+  flex: 1;
+  overflow: hidden;
+}
+#preview{
+  flex: 1;
+  overflow: hidden;
+}
 /*佩奇的身体*/
 .abs{
   position: absolute;
@@ -157,27 +159,23 @@
 }
 @media screen and (max-width: 768px) {
   #peiqi {
-    transform: scale(2.5);
+    top: 82px;
+    left: 50px;
+    margin-top: 0;
+  }
+  main{
+    flex-direction: column-reverse;
+
+  }
+  #code-wrapper{
+    /*height: 100px;*/
+    /*flex: 3;*/
+  }
+  #peiqi-wrapper{
+    /*height: 50%;*/
+  }
+  #peiqi{
+    transform: scale(1);
+    top: 10%;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
