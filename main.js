@@ -1,4 +1,13 @@
 let code = `
+/* 
+* 小猪佩奇身上纹，掌声送给社会人
+* 今天就用CSS画小猪佩奇，送给你啦
+* 好，我的表演即将开始！你准备好了吗？go
+*/
+
+/*
+* 先画佩奇的头
+*/
 .head{
   border-radius: 50% 44% 50% 50%;
   border: 2px solid #f6a3c4;
@@ -24,7 +33,9 @@ let code = `
   border-radius: 10px 40px 30px 0;
   background-color: #ffbddb;
 }
-/* 鼻子: nose 嘴巴: mouse 耳朵: ear 尾巴: tail*/
+/*
+* 然后再画佩奇的大鼻子
+*/
 .head .nose{
   border: 2px solid #f6a3c4;
   left: -38px;
@@ -32,6 +43,9 @@ let code = `
   border-radius: 50% 60%;
   transform: rotate(45deg);
 }
+/*
+* 接着帮佩奇画上两个鼻孔吧
+*/
 .nose::after,.nose::before{
   background: #e47b9c;
 }
@@ -43,11 +57,17 @@ let code = `
   right: 5px;
   top: 10px;
 }
+/*
+* 画佩奇的耳朵
+*/
 .ear{
   border: 2px solid #f6a3c4;
   background: #ffbddb;
   transform: rotate(20deg);
 }
+/*
+* 把佩奇的耳朵放到正确的位置上
+*/
 .ear-left{
   top: -35px;
   left: 30px;
@@ -58,6 +78,9 @@ let code = `
   top: -26px;
   border-radius: 50% / 40% 40% 50% 50%;
 }
+/*
+* 紧接着画佩奇的眼睛
+*/
 .eye{
   border: 2px solid #f6a3c4;
   border-radius: 50%;
@@ -77,6 +100,9 @@ let code = `
   right: 40px;
   top: 2px;
 }
+/*
+* 再接着画一下佩奇的嘴巴
+*/
 .mouse{
   border: 4px solid #dd5b80;
   border-radius: 50% 60%;
@@ -94,6 +120,9 @@ let code = `
   background: #ffbddb;
   color: #dd5b80;
 }
+/*
+* 接着画一下佩奇的脸颊
+*/
 .face{
   border-radius: 50%;
   right: 6px;
@@ -101,6 +130,9 @@ let code = `
   transform: rotate(20deg);
   background: #ffa4d0;
 }
+/*
+* 终于，可以画佩奇的身体啦
+*/
 #peiqi .body{
   bottom: 165px;
   left: 50%;
@@ -109,6 +141,11 @@ let code = `
   border-radius: 50% / 100%  100% 0 0;
   background: #f8694f;
 }
+
+/*
+* 然后画佩奇的胳膊
+*/
+
 .hand{
   border-radius: 50% / 100% 50% 50% 50%;
   z-index: -2;
@@ -119,6 +156,9 @@ let code = `
   left: -13px;
   top: 30px
 }
+/*
+* 左手
+*/
 .hand-left::before{
   left: 0;
   top: 30px;
@@ -126,6 +166,9 @@ let code = `
   transform: rotate(50deg);
   background: #ffc4e2;
 }
+/*
+* 右手
+*/
 .hand-left::after{
   left: -10px;
   top: 32px;
@@ -152,6 +195,10 @@ let code = `
   transform: rotate(-50deg);
   background: #ffc4e2;
 }
+/*
+* 看我巧妙地画佩奇的尾巴
+*/
+
 .tail{
   border: 4px solid #ffc3e0;
   border-radius: 50%;
@@ -164,18 +211,21 @@ let code = `
   border-radius: 50% / 100% 0 0 100%;
   background: #ffc3e0;
 }
-.tail::after{
-  // transform: rotate(-90deg);
-}
 .tail::before{
   right: -4px;
   top: -8px;
   transform: rotate(60deg);
 }
+/*
+* 然后画佩奇的小腿
+*/
 .leg{
   bottom: 135px;
   background: #ffc3df;
 }
+/*
+* 给佩奇穿上鞋子
+*/
 .leg::after{
   bottom: -4px;
   right: 0;
@@ -183,16 +233,33 @@ let code = `
   border-radius: 60% 100% 60% 60%;
 }
 `;
-
 $(function(){
   // $('#styleTag').html(code);
   // $('#code').html(code);
+  let speed = null;
+  let timer = null;
+  $('.btn-wrap .btn').click(function(){
+    $(this).addClass('active').siblings().removeClass('active');
+    let name = $(this).data('speed');
+    switch (name) {
+      case 'topSpeed':
+        speed = 1;
+        break;
+      case 'fast':
+        speed = 10;
+        break;
+      case 'slow':
+        speed = 40;
+        break;
+      default:
+        speed = 20;
+    }
+  });
   function writeCode(prefix, code){
-    let duration = 2;
     let styleTag = $('#styleTag');
     let codeContainer = $('#code');
     let n = 0;
-    let timer = setTimeout(function run(){
+    timer = setTimeout(function run(){
       n += 1;
       codeContainer.html(Prism.highlight(prefix + code.substring(0, n), Prism.languages.css));
       styleTag.html(code.substring(0, n));
@@ -201,11 +268,11 @@ $(function(){
 
       $('#code-wrapper').scrollTop(scrollHeight);
       if (n < code.length){
-        id = setTimeout(run, duration);
+        id = setTimeout(run, speed);
       } else {
         window.clearTimeout(timer);
       }
-    }, duration)
+    }, speed);
   }
   writeCode('', code);
 });
