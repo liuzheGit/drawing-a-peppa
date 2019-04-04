@@ -242,7 +242,12 @@ $(function(){
     player.play();
   });
   $('.mute-btn').click(function(){
-    player.volume > 0 ? player.volume = 0.0 : player.volume = 1.0;
+    if(player.volume > 0){
+      player.volume = 0.0
+    }else{
+      player.volume = 1.0;
+    }
+    // player.volume > 0 ? player.volume = 0.0 : player.volume = 1.0;
   });
   // $('#styleTag').html(code);
   // $('#code').html(code);
