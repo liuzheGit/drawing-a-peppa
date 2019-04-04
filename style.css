@@ -63,6 +63,9 @@ main{
   letter-spacing: 0.4em;
   cursor: pointer;
 }
+.mute-btn{
+  position: absolute;
+}
 .btn.active{
   background: #1b6d85;
 }

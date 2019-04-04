@@ -247,11 +247,10 @@ $(function(){
     }else{
       player.volume = 1.0;
     }
-    // player.volume > 0 ? player.volume = 0.0 : player.volume = 1.0;
   });
   // $('#styleTag').html(code);
   // $('#code').html(code);
-  let speed = null;
+  let speed = 20;
   let timer = null;
   $('.btn-wrap .btn').click(function(){
     $(this).addClass('active').siblings().removeClass('active');
