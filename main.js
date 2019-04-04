@@ -242,11 +242,17 @@ $(function(){
     player.play();
   });
   $('.mute-btn').click(function(){
-    player.volume > 0 ? player.volume = 0.0 : player.volume = 1.0;
+    if(player.paused){
+      player.play();
+      $(this).text('音乐暂停');
+    }else{
+      player.pause();
+      $(this).text('音乐播放');
+    }
   });
   // $('#styleTag').html(code);
   // $('#code').html(code);
-  let speed = null;
+  let speed = 20;
   let timer = null;
   $('.btn-wrap .btn').click(function(){
     $(this).addClass('active').siblings().removeClass('active');
