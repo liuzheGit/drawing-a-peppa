@@ -242,13 +242,18 @@ $(function(){
     player.play();
   });
   $('.mute-btn').click(function(){
-    if(player.paused){
-      player.play();
-      $(this).text('音乐暂停');
+    if(player.volume > 0){
+      player.volume = 0.0;
     }else{
-      player.pause();
-      $(this).text('音乐播放');
+      player.volume = 1.0;
     }
+    // if(player.paused){
+    //   player.play();
+    //   $(this).text('音乐暂停');
+    // }else{
+    //   player.pause();
+    //   $(this).text('音乐播放');
+    // }
   });
   // $('#styleTag').html(code);
   // $('#code').html(code);
